@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Home d'Admin {% endblock %}
+
+{% block body %}
+<a href="{{ path('app_admin_home') }}"> <i class="fa-solid fa-house-chimney">HOME</i> </a>
+{% block content %}
+<h1> ADMIN </h1>
+
+<a href="{{ path('app_admin_ingredient_retrieve') }}"> liste Ingredient </a> <br>
+<a href="{{ path('app_admin_pizza_retrieve') }}"> liste Pizza</a>
+
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "admin/base.html.twig" %}
+{% block content %}
+<h1> LISTE Ingredient </h1>
+<a href="{{ path('app_admin_ingredient_create') }}"> Nouvel Ingredient </a>
+
+{% for i in ingredients %}
+<p> {{i.name}}</p>
+{% endfor %}
+{% endblock %}

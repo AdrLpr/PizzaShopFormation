@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PizzaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PizzaRepository::class)]
@@ -19,8 +21,14 @@ class Pizza
     #[ORM\Column(type: 'float')]
     private $price;
 
-    #[ORM\Column(type: 'array')]
-    private $ingredient = [];
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'pizzas')]
+    private $Ingredient;
+
+    public function __construct()
+    {
+        $this->Ingredient = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -51,15 +59,28 @@ class Pizza
         return $this;
     }
 
-    public function getIngredient(): ?array
+    /**
+     * @return Collection<int, Ingredient>
+     */
+    public function getIngredient(): Collection
     {
-        return $this->ingredient;
+        return $this->Ingredient;
     }
 
-    public function setIngredient(array $ingredient): self
+    public function addIngredient(Ingredient $ingredient): self
     {
-        $this->ingredient = $ingredient;
+        if (!$this->Ingredient->contains($ingredient)) {
+            $this->Ingredient[] = $ingredient;
+        }
 
         return $this;
     }
+
+    public function removeIngredient(Ingredient $ingredient): self
+    {
+        $this->Ingredient->removeElement($ingredient);
+
+        return $this;
+    }
+
 }

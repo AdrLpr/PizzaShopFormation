@@ -1,0 +1,6 @@
+{% extends "admin/base.html.twig" %}
+{% block content %}
+<h1>Crée Pizza </h1>
+<a href="{{ path('app_admin_pizza_retrieve') }}"> liste pizzas </a>
+{{ form(formView) }}
+{% endblock %}
