@@ -1,11 +1,10 @@
 {% extends "base.html.twig" %}
-
 {% block title %}
-	Admin PizzaShop -
+	PizzaShop -
 	{% block sub_title %}{% endblock %}
 {% endblock %}
 {% block body %}
-<header>
+	<header>
     <p class="logo">PizzaShop</p>
 		
     <nav>
@@ -22,8 +21,7 @@
       {% endif %}
     </nav>
 	</header>
-        <div class="container">
-        <h1> ADMIN </h1>
+    <div class="container">
     <h3>
     {% if app.user %}
       <p>{{ app.user.email }}</p>
@@ -34,11 +32,10 @@
       <a href="{{ path('app_login')}}">Connectez-vous ! </a></p>
       
     {% endif %}
+      {% block page_title %}{% endblock %}
     </h3>
-{% block content %}
 
-<a href="{{ path('app_admin_ingredient_retrieve') }}"> liste Ingredient </a> <br>
-<a href="{{ path('app_admin_pizza_retrieve') }}"> liste Pizza</a>
 
-{% endblock %}
+    {% block content %}{% endblock %}
+  </div>
 {% endblock %}
