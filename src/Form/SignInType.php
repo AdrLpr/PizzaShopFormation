@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -43,13 +45,25 @@ class SignInType extends AbstractType
                     'label'=> 'Répétez votre mdp :',
                 ]
             ])
-            ->add('adress', CollectionType::class, [
-                'label' => 'Ville'
-            ])
-
             ->add('telephone', TelType::class, [
                 'label' => 'Téléphone'
             ])
+            ->add(
+                $builder->create('adress', FormType::class, ['by_reference'=> true])
+                ->add('ville', TextType::class ,[
+                    'label' => 'Ville',
+                ])
+                ->add('cp', IntegerType::class,[
+                    'label' => 'Code Postal',
+                ])
+                ->add('rue', TextType::class,[
+                    'label' => 'Adresse',
+                ])
+                ->add('complement', TextareaType::class,[
+                    'label' => 'Complément d\'adresse',
+                ])
+            )
+
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',
             ])
