@@ -1,0 +1,6 @@
+{% extends "admin/base.html.twig" %}
+{% block content %}
+<h1>Crée User </h1>
+<a href="{{ path('app_admin_user_retrieve') }}"> liste user </a>
+{{ form(formView) }}
+{% endblock %}
