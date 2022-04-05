@@ -4,6 +4,7 @@
     {# {% block Connect %} {% endblock %} #}
 {% block content %}
     <h3> BIENVENUE ! {{user.firstName}} {{user.lastName}} </h3>
+    <a href='{{ path('app_profilUpdate') }}'><i class="fa-solid fa-pen-to-square"></i></a>
 
     <p> vous habitez à : {{user.adress.ville}}
 {% endblock %}

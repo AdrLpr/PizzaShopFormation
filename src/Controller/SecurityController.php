@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ProfilType;
 use App\Form\SignInType;
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -65,12 +66,42 @@ class SecurityController extends AbstractController
     
     #[IsGranted('ROLE_USER')]
     #[Route('/mon-profil', name:'app_profil')]
-    public function profil(UserRepository $repository): Response
+    public function profil(): Response
     {
         $user= $this->getUser();
 
         return $this->render('security/profil.html.twig', [
             'user'=>$user,
+        ]);
+    }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/mon-profil/modifier', name:'app_profilUpdate')]
+    public function profilUpdate(Request $request, UserPasswordHasherInterface $passwordHasher, UserRepository $repository): Response
+    {
+        $form= $this->createForm(ProfilType::class, $this->getUser());
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $user = $form->getData();
+            $plainpassword= $user->getPassword();
+            
+            $hassedpassword = $passwordHasher->hashPassword(
+                $user,
+                $plainpassword
+            );
+
+            $user->setPassword($hassedpassword);
+
+            $repository->add($user);
+
+            return $this->redirectToRoute('app_login');
+        }
+        $formView = $form->createView();
+        return $this->render('security/profilUpdate.html.twig', [
+            'formView' => $formView
         ]);
     }
 }
