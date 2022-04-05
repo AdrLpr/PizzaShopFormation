@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	PizzaShop -
+	{% block sub_title %}{% endblock %}
+{% endblock %}
+{% block body %}
+	<header>
+    <p class="logo">PizzaShop</p>
+		
+    <nav>
+      <a href="{{ path('app_front_home_home') }}">
+          <i class="fa-solid fa-house"></i>
+      </a>
+      {# <a href="{{ path('app_front_pizza_retrieve') }}">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a> #}
+      {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_admin_home_home') }}">
+          Admin
+        </a>
+      {% endif %}
+    </nav>
+	</header>
+    <div class="container">
+    <h3>
+    {% if app.user %}
+      <p>{{ app.user.email }}</p>
+      <p>Vous êtes connécté
+      <a href="{{ path('app_logout')}}">Déconnexion </a></p>
+    {% else %}
+      <p>Vous n'êtes pas connécté <br>
+      <a href="{{ path('app_login')}}">Connectez-vous ! </a></p>
+      
+    {% endif %}
+      {% block page_title %}{% endblock %}
+    </h3>
+
+
+    {% block content %}{% endblock %}
+  </div>
+{% endblock %}

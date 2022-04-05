@@ -1,0 +1,29 @@
+App\Entity\User:
+  user1:
+    email: "remi@gmail.com"
+    roles: [ROLE_USER]
+    password: \$2y\$13\$1PbKFeR5y6OcTjOxFnpzhOHLos5QB7Zg0qNdJ9eIzfQ87DxXjS8ae
+  user2:
+    email: "admin@gmail.com"
+    roles: [ROLE_ADMIN]
+    password: \$2y\$13\$W6D3IpbCka.V.Y9.EbO/Qe3Oin0sU1W0FoNCsBywHzzF7wYlmj4D2
+
+App\Entity\Ingredient:
+  ingredient1:
+    name: "Ognions"
+  ingredient2:
+    name: "Fromage"
+  ingredient3:
+    name: "Anchois"
+  ingredient{4..10}:
+    name: "<safeColorName()>"
+
+App\Entity\Pizza:
+  pizza1:
+    name: "Pizza 4 Fromage"
+    price: "14.99"
+    Ingredient: ["@ingredient1", "@ingredient2"]
+  pizza{2..8}:
+    name: "Pizza <word()>"
+    price: "<numberBetween(5.0, 40.0)>"
+    Ingredient: "3x @ingredient*"

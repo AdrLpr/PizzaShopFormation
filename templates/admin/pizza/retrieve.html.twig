@@ -1,0 +1,9 @@
+{% extends "admin/base.html.twig" %}
+{% block content %}
+<h1> LISTE Pizza </h1>
+<a href="{{ path('app_admin_pizza_create') }}"> Nouvelle Pizza </a>
+
+{% for pizza in pizzas %}
+<p> {{pizza.name}}</p>
+{% endfor %}
+{% endblock %}
