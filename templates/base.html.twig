@@ -17,6 +17,7 @@
     </head>
     <body>
         {% block body %}
+        {% block nav %}
         	<header>
     <p class="logo">PizzaShop</p>
 		
@@ -24,9 +25,9 @@
       <a href="{{ path('app_front_home_home') }}">
           <i class="fa-solid fa-house"></i>
       </a>
-      {# <a href="{{ path('app_front_pizza_retrieve') }}">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </a> #}
+       <a href="{{ path('app_profil') }}">
+        <i class="fa-solid fa-user"></i>
+      </a> 
       {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('app_admin_home_home') }}">
           Admin
@@ -34,7 +35,9 @@
       {% endif %}
     </nav>
 	</header>
+      {% endblock %}
     <div class="container">
+      {% block Connect %}
     <h3>
     {% if app.user %}
       <p>{{ app.user.email }}</p>
@@ -45,9 +48,9 @@
       <a href="{{ path('app_login')}}">Connectez-vous ! </a></p>
       
     {% endif %}
-      {% block page_title %}{% endblock %}
+      {% endblock %}
     </h3>
-
+      {% block page_title %}{% endblock %}
 
     {% block content %}{% endblock %}
   </div>

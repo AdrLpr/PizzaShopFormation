@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block subtitle %}Mon-Profil{% endblock %}
+    {# {% block Connect %} {% endblock %} #}
+{% block content %}
+    <h3> BIENVENUE ! {{user.firstName}} {{user.lastName}} </h3>
+
+    <p> vous habitez à : {{user.adress.ville}}
+{% endblock %}

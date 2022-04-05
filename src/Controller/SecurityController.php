@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\SignInType;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,4 +63,14 @@ class SecurityController extends AbstractController
         ]);
     }
     
+    #[IsGranted('ROLE_USER')]
+    #[Route('/mon-profil', name:'app_profil')]
+    public function profil(UserRepository $repository): Response
+    {
+        $user= $this->getUser();
+
+        return $this->render('security/profil.html.twig', [
+            'user'=>$user,
+        ]);
+    }
 }
