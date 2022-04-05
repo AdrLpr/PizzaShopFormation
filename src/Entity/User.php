@@ -27,6 +27,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer', nullable: true)]
     private $telephone;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $firstName;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $lastName;
+
+    #[ORM\Column(type: 'object', nullable: true)]
+    private $adress;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +114,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelephone(?int $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    public function setAdress($adress): self
+    {
+        $this->adress = $adress;
 
         return $this;
     }

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Sign In!{% endblock %}
-{% block body %}
+{% block content %}
 {{ form(formView) }}
+<a href="{{ path('app_login') }}">Déjà un compte ? Connectez-vous !</a>
 {% endblock %}
