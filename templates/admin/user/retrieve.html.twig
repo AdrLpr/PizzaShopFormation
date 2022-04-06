@@ -4,6 +4,6 @@
 <a href="{{ path('app_admin_user_create') }}"> Nouvel user </a>
 
 {% for user in users %}
-<p> {{user.lastName}} {{user.firstName}} </p>
+<p> {{user.lastName}} {{user.firstName}} <a href="{{ path('app_admin_user_update', {id: user.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a> <a href="{{ path('app_admin_user_delete',{id: user.id}) }}"><i class="fa-solid fa-trash-can"></i></a></p>
 {% endfor %}
 {% endblock %}

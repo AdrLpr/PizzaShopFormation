@@ -1,0 +1,6 @@
+{% extends "admin/base.html.twig" %}
+{% block content %}
+<h1>Modifier Ingrédient </h1>
+<a href="{{ path('app_admin_ingredient_retrieve') }}"> liste Ingredients </a>
+{{ form(formView) }}
+{% endblock %}

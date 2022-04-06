@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SignInType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -34,6 +34,15 @@ class SignInType extends AbstractType
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',
                 'required'=>true
+            ])
+
+            ->add('role', ChoiceType::class, [
+                'label' => 'Role :',
+                'required' => true,
+                'choices' => [
+                    'Utilisateur' => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN',
+                ],
             ])
             ->add('password', RepeatedType::class, [
                 'type'=> PasswordType::class,

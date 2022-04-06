@@ -1,5 +1,7 @@
 {% extends "front/base.html.twig" %}
-
+{% block sub_title %}Acceuil{% endblock %}
 {% block content %}
+    <h1> BIENVENUE SUR L'ACCEUIL PIZZASHOP </h1>
 
+    <a href="{{ path('app_pizza_retrieve') }}"> Découvrez nos pizzas !!!!</a>
 {% endblock %}

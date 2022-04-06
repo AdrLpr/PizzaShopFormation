@@ -4,6 +4,6 @@
 <a href="{{ path('app_admin_pizza_create') }}"> Nouvelle Pizza </a>
 
 {% for pizza in pizzas %}
-<p> {{pizza.name}}</p>
+<p> {{pizza.name}}<a href="{{ path('app_admin_pizza_update', {id: pizza.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a> <a href="{{ path('app_admin_pizza_delete',{id: pizza.id}) }}"><i class="fa-solid fa-trash-can"></i></a></p>
 {% endfor %}
 {% endblock %}
