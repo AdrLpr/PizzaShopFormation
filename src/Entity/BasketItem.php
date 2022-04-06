@@ -16,7 +16,7 @@ class BasketItem
     #[ORM\Column(type: 'integer')]
     private $quantity;
 
-    #[ORM\ManyToOne(targetEntity: basket::class, inversedBy: 'basketItems')]
+    #[ORM\ManyToOne(targetEntity: Basket::class, inversedBy: 'basketItems')]
     #[ORM\JoinColumn(nullable: false)]
     private $basket;
 
