@@ -2,13 +2,24 @@
 
 {% block content %}
 <h1>Mon panier </h1>
+    <a href="{{ path('app_pizza_retrieve') }}"> retour au menu </a> <br>
 {# test panier vide #}
 
 {% if app.user.basket.isEmpty() %}
 <h2> panier vide </h2>
 {% else %}
+
+    {% for item in app.user.basket.basketItems %}
+
+    
+    
     <h3>{{item.pizza.name}}
-    {{item.pizza.price}}</h3>
+    {{item.pizza.price}} Quantité : {{item.quantity}}</h3> 
+<a href="{{ path('app_front_basket_decrease',{id: item.id})}}"> <i class="fa-solid fa-circle-minus"></i> 1 de moins </a>
+    <a href="{{ path('app_front_basket_increase',{id: item.id})}}"> <i class="fa-solid fa-circle-plus"></i> 1 de plus </a>
+    <br> <a href="{{ path('app_front_basket_delete',{id: item.id})}}"> <i class="fa-solid fa-trash"></i> Enlever du panier </a>
+    {% endfor %} <br><br>
+    <a href="{{ path('app_front_confirm_adress')}}"> Confirmez votre commande </a>
 {% endif %}
 
 {% endblock %}

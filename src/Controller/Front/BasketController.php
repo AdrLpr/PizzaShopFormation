@@ -32,7 +32,7 @@ class BasketController extends AbstractController
 
         $repository->add($item);
 
-        return $this->redirectToRoute('app_front_basket_display');
+        return $this->redirectToRoute('app_pizza_retrieve');
     }
 
     #[Route('/panier', name:'app_front_basket_display')]
@@ -41,10 +41,10 @@ class BasketController extends AbstractController
         return $this->render('front/basket/display.html.twig');
     }
 
-        /**
+    /**
      * Permet d'ajouter 1 à la quantité d'un item donnée
      */
-    #[Route('panier/{id}/augmenter', name: 'app_front_basket_increase')]
+    #[Route('/panier/{id}/augmenter', name: 'app_front_basket_increase')]
     public function increase(BasketItem $item, BasketItemRepository $repository): Response
     {
         $item->setQuantity($item->getQuantity() + 1);
@@ -57,7 +57,7 @@ class BasketController extends AbstractController
     /**
      * Supprime un item du panier
      */
-    #[Route('panier/{id}/supprimer', name: 'app_front_basket_delete')]
+    #[Route('/panier/{id}/supprimer', name: 'app_front_basket_delete')]
     public function delete(BasketItem $item, BasketItemRepository $repository): Response
     {
         $repository->remove($item);
@@ -68,7 +68,7 @@ class BasketController extends AbstractController
     /**
      * Permet d'enlever 1 à la quantité d'un item du panier
      */
-    #[Route('/{id}/diminuer', name: 'app_front_basket_decrease')]
+    #[Route('/panier/{id}/diminuer', name: 'app_front_basket_decrease')]
     public function decrease(BasketItem $item, BasketItemRepository $repository): Response
     {
         $item->setQuantity($item->getQuantity() - 1);

@@ -5,12 +5,25 @@ App\Entity\User:
     password: \$2y\$13\$1PbKFeR5y6OcTjOxFnpzhOHLos5QB7Zg0qNdJ9eIzfQ87DxXjS8ae
     firstName: Remi
     lastName: Ratatouille
+    adress: {
+      'ville': "Paris",
+      'cp': "45",
+      'rue': "lol 45",
+      'complement': "hfeoaz",
+    }
+    
   user2:
     email: "admin@gmail.com"
     roles: [ROLE_ADMIN]
     password: \$2y\$13\$W6D3IpbCka.V.Y9.EbO/Qe3Oin0sU1W0FoNCsBywHzzF7wYlmj4D2
     firstName: Admin
     lastName: Admin
+    adress: {
+      'ville': "Marseille",
+      'cp': "12",
+      'rue': "perdu 79",
+      'complement': "qsdfghj",
+    }
 
 App\Entity\Ingredient:
   ingredient1:
