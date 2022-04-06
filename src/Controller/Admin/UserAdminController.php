@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -57,9 +58,8 @@ class UserAdminController extends AbstractController
     }
 
     #[Route('/admin/user/{id}/update', name:"app_admin_user_update")]
-    public function update(int $id,userRepository $repository, Request $request ): Response
+    public function update(User $user,userRepository $repository, Request $request ): Response
     {
-        $user = $repository->find($id);
 
         if (!$user){
             return new Response("L'utilisateur n'existe pas", 404);
@@ -83,9 +83,8 @@ class UserAdminController extends AbstractController
     }
 
     #[Route('/admin/user/{id}/delete', name:"app_admin_user_delete")]
-    public function delete(int $id,userRepository $repository, Request $request ): Response
+    public function delete(User $user,userRepository $repository, Request $request ): Response
     {
-        $user = $repository->find($id);
 
         if (!$user){
             return new Response("L'utilisateur n'existe pas", 404);

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Entity\Pizza;
 use App\Form\PizzaType;
 use App\Repository\PizzaRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -45,9 +46,8 @@ class PizzaAdminController extends AbstractController
     }
 
     #[Route('/admin/pizza/{id}/update', name:"app_admin_pizza_update")]
-    public function update(int $id,pizzaRepository $repository, Request $request ): Response
+    public function update(Pizza $pizza,pizzaRepository $repository, Request $request ): Response
     {
-        $pizza = $repository->find($id);
 
         if (!$pizza){
             return new Response("La pizza n'existe pas", 404);
@@ -71,10 +71,8 @@ class PizzaAdminController extends AbstractController
     }
 
     #[Route('/admin/pizza/{id}/delete', name:"app_admin_pizza_delete")]
-    public function delete(int $id,pizzaRepository $repository, Request $request ): Response
+    public function delete(Pizza $pizza,pizzaRepository $repository, Request $request ): Response
     {
-        $pizza = $repository->find($id);
-
         if (!$pizza){
             return new Response("L'ingrédients n'existe pas", 404);
         }

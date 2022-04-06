@@ -10,8 +10,9 @@
             <h4> 
             <ul> {% for ingredient in pizza.Ingredient %}
                     <li> {{ingredient.name}} </li>
-                
-            {% endfor %}
+                    {% endfor %}
+            </ul>
+            <a href ="{{ path('app_front_basket_add', {id: pizza.id}) }}"> AJOUTER AU PANIER </a>
         </div>
     {% endfor %}
 {% endblock %}

@@ -24,6 +24,9 @@ class Pizza
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'pizzas')]
     private $Ingredient;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $description;
+
     public function __construct()
     {
         $this->Ingredient = new ArrayCollection();
@@ -79,6 +82,18 @@ class Pizza
     public function removeIngredient(Ingredient $ingredient): self
     {
         $this->Ingredient->removeElement($ingredient);
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

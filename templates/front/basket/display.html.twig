@@ -1,0 +1,14 @@
+{% extends "front/base.html.twig" %}
+
+{% block content %}
+<h1>Mon panier </h1>
+{# test panier vide #}
+
+{% if app.user.basket.isEmpty() %}
+<h2> panier vide </h2>
+{% else %}
+    <h3>{{item.pizza.name}}
+    {{item.pizza.price}}</h3>
+{% endif %}
+
+{% endblock %}

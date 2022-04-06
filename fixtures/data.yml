@@ -3,10 +3,14 @@ App\Entity\User:
     email: "remi@gmail.com"
     roles: [ROLE_USER]
     password: \$2y\$13\$1PbKFeR5y6OcTjOxFnpzhOHLos5QB7Zg0qNdJ9eIzfQ87DxXjS8ae
+    firstName: Remi
+    lastName: Ratatouille
   user2:
     email: "admin@gmail.com"
     roles: [ROLE_ADMIN]
     password: \$2y\$13\$W6D3IpbCka.V.Y9.EbO/Qe3Oin0sU1W0FoNCsBywHzzF7wYlmj4D2
+    firstName: Admin
+    lastName: Admin
 
 App\Entity\Ingredient:
   ingredient1:
@@ -23,7 +27,9 @@ App\Entity\Pizza:
     name: "Pizza 4 Fromage"
     price: "14.99"
     Ingredient: ["@ingredient1", "@ingredient2"]
+    description: "La meilleure Pizza du monde"
   pizza{2..8}:
     name: "Pizza <word()>"
     price: "<numberBetween(5.0, 40.0)>"
     Ingredient: "3x @ingredient*"
+    description: "<catchPhrase()>"

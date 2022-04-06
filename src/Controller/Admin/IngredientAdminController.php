@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Entity\Ingredient;
 use App\Form\IngredientType;
 use App\Repository\IngredientRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -46,9 +47,8 @@ class IngredientAdminController extends AbstractController
     }
 
     #[Route('/admin/ingredient/{id}/update', name:"app_admin_ingredient_update")]
-    public function update(int $id,IngredientRepository $repository, Request $request ): Response
+    public function update(Ingredient $ingredient,IngredientRepository $repository, Request $request ): Response
     {
-        $ingredient = $repository->find($id);
 
         if (!$ingredient){
             return new Response("L'ingrédients n'existe pas", 404);
@@ -72,9 +72,8 @@ class IngredientAdminController extends AbstractController
     }
 
     #[Route('/admin/ingredient/{id}/delete', name:"app_admin_ingredient_delete")]
-    public function delete(int $id,IngredientRepository $repository, Request $request ): Response
+    public function delete(Ingredient $ingredient,IngredientRepository $repository, Request $request ): Response
     {
-        $ingredient = $repository->find($id);
 
         if (!$ingredient){
             return new Response("L'ingrédients n'existe pas", 404);
