@@ -15,11 +15,13 @@ class Basket
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\OneToOne(targetEntity: User::class, cascade: ['persist', 'remove'])]
-    private $basket;
 
     #[ORM\OneToMany(mappedBy: 'basket', targetEntity: BasketItem::class, orphanRemoval: true)]
     private $basketItems;
+
+    #[ORM\OneToOne(targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
 
     public function __construct()
     {
@@ -31,17 +33,6 @@ class Basket
         return $this->id;
     }
 
-    public function getBasket(): ?User
-    {
-        return $this->basket;
-    }
-
-    public function setBasket(?User $basket): self
-    {
-        $this->basket = $basket;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, BasketItem>
@@ -69,6 +60,18 @@ class Basket
                 $basketItem->setBasket(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

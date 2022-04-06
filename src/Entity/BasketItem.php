@@ -20,6 +20,10 @@ class BasketItem
     #[ORM\JoinColumn(nullable: false)]
     private $basket;
 
+    #[ORM\ManyToOne(targetEntity: Pizza::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $pizza;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +49,18 @@ class BasketItem
     public function setBasket(?basket $basket): self
     {
         $this->basket = $basket;
+
+        return $this;
+    }
+
+    public function getPizza(): ?Pizza
+    {
+        return $this->pizza;
+    }
+
+    public function setPizza(?Pizza $pizza): self
+    {
+        $this->pizza = $pizza;
 
         return $this;
     }
