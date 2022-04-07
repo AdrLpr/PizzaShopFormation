@@ -1,0 +1,210 @@
+/**
+ * Voici le style de l'intégralité de l'application
+ */
+
+/*
+============================
+Définition des Variables CSS
+============================
+*/
+:root {
+    --color-white: #efefef;
+    --color-black: #363636;
+    --color-green: #cef9d0;
+    --color-red: #f9cece;
+    --color-grey: #dddddd;
+    --base-font-size: 18px;
+  }
+
+  /*
+============================================
+Définition du style des éléments principaux:
+html, body, h* etc ...
+============================================
+*/
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--base-font-size);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1,
+.text-display {
+    font-family: "Lobster", sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Outfit", sans-serif;
+} 
+
+.container {
+    flex-grow: 2;
+    align-self: center;
+    width: 1024px;
+    padding-bottom: 1.6rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+}
+
+/*
+==============================
+Définition des class du header
+==============================
+*/
+.header {
+    width: 100%;
+}
+
+.header .navbar {
+      display: flex;
+    justify-content: space-between;
+    background-color: rgba(54, 54, 54, 0.7);
+    backdrop-filter: blur(10);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+.navbar > nav {
+    display: flex;
+}
+
+.navbar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    cursor: pointer;
+    color: var(--color-white);
+    font-size: 1.4rem;
+    text-decoration: none;
+    outline: none;
+}
+
+/*
+===================================
+Design des boutons de l'application
+===================================
+*/
+.btn {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.53);
+    border: 0;
+    border-radius: 5px;
+    background-color: rgba(206, 249, 208, 0.72);
+    color: var(--color-black);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+  
+.btn i {
+    display: flex;
+    text-align: center;
+    padding: 0.6rem;
+    font-size: 1.4rem;
+}
+
+/*
+================================
+Design des miniatures des pizzas
+================================
+*/
+.pizza-thumb {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+    padding: 0.6rem;
+  }
+  .pizza-thumb .img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+    z-index: 0;
+    filter: blur(5px);
+  }
+  .pizza-thumb .img .black-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.53);
+  }
+  .pizza-thumb .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pizza-thumb .text-display,
+  .pizza-thumb .description,
+  .pizza-thumb .actions {
+    z-index: 1;
+  }
+  .pizza-thumb .text-display,
+  .pizza-thumb .description {
+    color: white;
+    text-align: center;
+  }
+  .pizza-thumb > .text-display {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+.pizza-thumb .description {
+    margin-bottom: 2rem;  
+}
+
+.pizza-thumb .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 2.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.pizza-thumb .actions .price {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+}
+.pizza-thumb .quantity {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.pizza-thumb .quantity .price {
+    color: white;
+    font-family: "Lobster", sans-serif;
+    font-size: 2.5rem;
+    margin: 0rem 1.4rem;
+}
+  
