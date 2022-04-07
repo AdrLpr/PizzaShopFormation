@@ -1,17 +1,9 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block title %}
-	Admin PizzaShop -
-	{% block sub_title %}{% endblock %}
+{% block navbar %}
+  {% include 'front/_navbar.html.twig' %}
 {% endblock %}
 
-
-{% block content %}
-
-<a href="{{ path('app_admin_ingredient_retrieve') }}"> liste Ingredient </a> <br>
-<a href="{{ path('app_admin_pizza_retrieve') }}"> liste Pizza</a> <br>
-<a href="{{ path('app_admin_user_retrieve') }}"> liste Users </a>
-
-
-
+{% block title %}
+  PizzaShop - {% block sub_title '' %}
 {% endblock %}

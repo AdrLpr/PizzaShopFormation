@@ -34,6 +34,9 @@ class PizzaType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description'
             ])
+            ->add('image', TextType::class, [
+                'label' => 'Lien vers l\'image'
+            ])
             ->add('submit', SubmitType::class, [
                 'label'=>'Envoyer'
             ])

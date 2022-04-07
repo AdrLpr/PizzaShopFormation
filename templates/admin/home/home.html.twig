@@ -1,0 +1,15 @@
+{% extends "admin/base.html.twig" %}
+
+{% block sub_title %}Home{% endblock %}
+
+
+
+{% block content %}
+    <h1> Administration </h1>
+<a class="listLink" href="{{ path('app_admin_ingredient_retrieve') }}"> liste Ingredient </a> <br>
+<a class="listLink" href="{{ path('app_admin_pizza_retrieve') }}"> liste Pizza</a> <br>
+<a class="listLink" href="{{ path('app_admin_user_retrieve') }}"> liste Users </a>
+
+
+
+{% endblock %}

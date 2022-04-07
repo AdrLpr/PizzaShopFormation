@@ -41,8 +41,10 @@ App\Entity\Pizza:
     price: "14.99"
     Ingredient: ["@ingredient1", "@ingredient2"]
     description: "La meilleure Pizza du monde"
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcommeunchef.boulanger.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fpizza-barbecue.jpg&f=1&nofb=1"
   pizza{2..8}:
     name: "Pizza <word()>"
     price: "<numberBetween(5.0, 40.0)>"
     Ingredient: "3x @ingredient*"
     description: "<catchPhrase()>"
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcommeunchef.boulanger.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fpizza-barbecue.jpg&f=1&nofb=1"

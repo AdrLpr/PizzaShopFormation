@@ -1,6 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'front/base.html.twig' %}
 
-{% block title %}Sign In!{% endblock %}
+{% block sub_title %}Inscription{% endblock %}
+{% block navbar %} {% include "front/_navbar.html.twig" %}{% endblock %}
 {% block content %}
 {{ form(formView) }}
 <a href="{{ path('app_login') }}">Déjà un compte ? Connectez-vous !</a>

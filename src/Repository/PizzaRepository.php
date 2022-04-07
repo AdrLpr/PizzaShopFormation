@@ -73,4 +73,14 @@ class PizzaRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findThreeLastest(): array
+    {
+        return $this
+            ->createQueryBuilder('pizza')
+            ->setMaxResults(3)
+            ->orderBy('pizza.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -124,6 +124,10 @@ Design des boutons de l'application
     font-size: 1.4rem;
 }
 
+.delete{
+    background-color: rgba(249, 206, 206, 0.72);
+}
+
 /*
 ================================
 Design des miniatures des pizzas
@@ -207,4 +211,33 @@ Design des miniatures des pizzas
     font-size: 2.5rem;
     margin: 0rem 1.4rem;
 }
-  
+
+/*
+================================
+Design des liens de listes
+================================
+*/
+
+.listLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.53);
+    border: 0;
+    border-radius: 5px;
+    background-color: rgba(206, 249, 208, 0.72);
+    color: var(--color-black);
+    font-weight: 600;
+    font-size: 1.2rem;
+    width: 30%;
+}
+
+.listLink i {
+    display: flex;
+    text-align: center;
+    padding: 0.6rem;
+    font-size: 1.4rem;
+}

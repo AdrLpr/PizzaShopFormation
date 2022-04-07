@@ -1,7 +1,28 @@
 {% extends "front/base.html.twig" %}
 {% block sub_title %}Acceuil{% endblock %}
 {% block content %}
-    <h1> BIENVENUE SUR L'ACCEUIL PIZZASHOP </h1>
+    <h1> Nos Pizzas </h1>
 
-    <a href="{{ path('app_pizza_retrieve') }}"> Découvrez nos pizzas !!!!</a>
+    <div class="pizza-list">
+    {% for pizza in pizzas %}
+        <div class="pizza-thumb"> 
+            <div class="img">
+                <div class="black-frame"></div>
+                <img src="{{ pizza.image }}" alt="{{pizza.name}}"/>
+            </div>
+            <h2 class="text-display"> {{pizza.name}} </h2>
+            <p class="description">{{pizza.description}} </p>
+            <div class="actions">
+                <p class="price text-display">{{ pizza.price }}  €</p>
+                <a href="{{ path('app_front_basket_add', {id: pizza.id}) }}" class="btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Ajouter au panier
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    
+        <a class="listLink" href="{{path('app_pizza_retrieve')}}"> <i class="fa-solid fa-pizza-slice"></i>Voir la carte du menu </a>
+    
 {% endblock %}

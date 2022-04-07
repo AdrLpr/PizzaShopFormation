@@ -3,16 +3,25 @@
 {% block sub_title %}Pizza{% endblock %}
 
 {% block content %}
+    <h1> Nos Pizzas </h1>
+
+    <div class="pizza-list">
     {% for pizza in pizzas %}
-        <div>
-            <h2> {{pizza.name}} </h2>
-            <h3> {{pizza.price}} €</h3>
-            <h4> 
-            <ul> {% for ingredient in pizza.Ingredient %}
-                    <li> {{ingredient.name}} </li>
-                    {% endfor %}
-            </ul>
-            <a href ="{{ path('app_front_basket_add', {id: pizza.id}) }}"> AJOUTER AU PANIER </a>
+        <div class="pizza-thumb"> 
+            <div class="img">
+                <div class="black-frame"></div>
+                <img src="{{ pizza.image }}" alt="{{pizza.name}}"/>
+            </div>
+            <h2 class="text-display"> {{pizza.name}} </h2>
+            <p class="description">{{pizza.description}} </p>
+            <div class="actions">
+                <p class="price text-display">{{ pizza.price }}  €</p>
+                <a href="{{ path('app_front_basket_add', {id: pizza.id}) }}" class="btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Ajouter au panier
+                </a>
+            </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
